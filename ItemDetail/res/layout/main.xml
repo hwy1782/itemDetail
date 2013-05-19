@@ -4,10 +4,106 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <TextView
-            android:layout_width="fill_parent"
+    <!--商品大图  -->
+    <LinearLayout
+            android:id="@+id/item_large_picture_placeholder"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
+            >
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/meinv"
             />
+
+    </LinearLayout>
+
+    <!-- 价格 + 购买按钮 -->
+    <LinearLayout
+            android:id="@+id/price_and_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            >
+
+    <RelativeLayout
+            android:id="@+id/price_buy_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+    <TextView
+            android:id="@+id/item_new_price"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="￥ 86.52"
+            android:textColor="@color/salmon"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/item_buy_button"
+            />
+    <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_old_price"
+            android:layout_toRightOf="@id/item_new_price"
+            android:text="￥ 156.52"
+            android:layout_alignBaseline="@+id/item_buy_button"
+            />
+
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_buy_button"
+            android:layout_alignParentRight="true"
+            android:text="购买"
+            />
+    </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- 商品详情按钮 + 商品评价 -->
+    <LinearLayout
+            android:id="@+id/item_detail_and_evaluate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+    <RelativeLayout
+            android:id="@+id/item_detail_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="商品详情"
+            />
+
+     <ImageView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:src="@drawable/right_icon"
+             android:layout_alignParentRight="true"
+             />
+     </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/item_evaluate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_evaluate_lst"
+            >
+
+    </ListView>
+    </LinearLayout>
+
+    </LinearLayout>
+
+
 </LinearLayout>
 
