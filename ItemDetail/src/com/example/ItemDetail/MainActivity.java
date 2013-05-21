@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.*;
+import com.example.service.HttpService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,10 @@ public class MainActivity extends Activity {
 
     LinearLayout itemEvaluate;
 
+    RelativeLayout itemEvaluateMoudle;
+
+    LinearLayout bottonModule;
+
     private ViewPager viewPager;
 
     private List<View> views;
@@ -35,18 +40,23 @@ public class MainActivity extends Activity {
     private int offset = 0;
     private int currIndex = 0;
     private int bmpW;
-    private ImageView imageView;
+
+    ImageView itemLargePicture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        //初始化组件
         initCompoment();
-
+        //初始化大图
         initViewPager();
-
+        //添加评论信息
         addItemEvaluate();
+        //设置组件透明度
+        setComponentTransparent();
+
     }
 
 
@@ -57,9 +67,19 @@ public class MainActivity extends Activity {
 
     private void initCompoment(){
         priceBuyPlaceholder = (RelativeLayout) findViewById(R.id.price_buy_placeholder);
-//        itemLargePicture = (ImageView) findViewById(R.id.item_large_picture);
         itemEvaluate = (LinearLayout) findViewById(R.id.item_evaluate);
         viewPager = (ViewPager) findViewById(R.id.vPager);
+        itemEvaluateMoudle = (RelativeLayout) findViewById(R.id.item_picture_moudle);
+        bottonModule = (LinearLayout) findViewById(R.id.botton_module);
+        itemLargePicture = (ImageView) findViewById(R.id.item_large_picture);
+    }
+
+    private void setComponentTransparent(){
+        priceBuyPlaceholder.setBackgroundColor(R.color.black);
+        priceBuyPlaceholder.getBackground().setAlpha(160);
+
+        bottonModule.setBackgroundColor(R.color.black);
+        bottonModule.getBackground().setAlpha(150);
     }
 
     /**
@@ -71,6 +91,7 @@ public class MainActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         for(int i = 0; i < 3; i++){
             View tmpView = inflater.inflate(R.layout.item_picture, null);
+//            itemLargePicture.setImageBitmap(HttpService.getPicture("http://ptg.tc.qq.com/qtuan2/0/_abcompat_77a776cf3d04b6f3195e0cfd7fc67435/660"));
             views.add(tmpView);
             viewHeight = tmpView.getHeight() > viewHeight ? tmpView.getHeight() : viewHeight;
         }
@@ -80,15 +101,20 @@ public class MainActivity extends Activity {
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
     }
 
+
     /**
      * 添加评论
      */
     private void addItemEvaluate(){
         LayoutInflater inflater = getLayoutInflater();
         for(int i = 0 ; i < 3; i++){
-            inflater.inflate(R.layout.item_evaluate,itemEvaluate);
+            View view = inflater.inflate(R.layout.item_evaluate,itemEvaluate);
+            view.setBackgroundColor(R.color.black);
+            view.getBackground().setAlpha(150);
         }
     }
+
+
 
     /**
      * 填充viewPage页面
@@ -147,7 +173,6 @@ public class MainActivity extends Activity {
             animation.setFillAfter(true);// True:
             animation.setDuration(300);
 //            imageView.startAnimation(animation);
-//            Toast.makeText(ViewPageTest.this, "current page is " + viewPager.getCurrentItem() , Toast.LENGTH_SHORT).show();
         }
 
     }

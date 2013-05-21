@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+    >
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/item_detail_module"
+    >
 <com.example.ItemDetail.MyScrollView
-              xmlns:android="http://schemas.android.com/apk/res/android"
               android:scrollbars="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -10,33 +19,6 @@
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent">
 
-    <!--商品大图  -->
-    <!--<RelativeLayout
-            android:id="@+id/item_large_picture_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_large_picture"
-            android:src="@drawable/meinv"
-            />
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/meinv"
-            android:text="商品标题"
-            android:layout_above="@id/item_large_picture"
-            android:background="@color/red"
-            />
-
-    </RelativeLayout>-->
-   <!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >-->
     <android.support.v4.view.ViewPager
             android:id="@+id/vPager"
             android:layout_width="wrap_content"
@@ -46,28 +28,28 @@
             android:background="#000000"
             android:flipInterval="30"
             android:persistentDrawingCache="animation" />
-    <!--</LinearLayout>-->
 
     <LinearLayout
             android:id="@+id/item_detail_down"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/light_backgrand"
             android:orientation="vertical"
+            android:background="@drawable/light_backgrand"
             >
+
 
     <!-- 价格 + 购买按钮 -->
     <LinearLayout
             android:id="@+id/price_and_buy"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
+            android:paddingBottom="10dp"
             >
 
     <RelativeLayout
             android:id="@+id/price_buy_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
             >
     <!-- 优惠后价格-->
     <TextView
@@ -98,6 +80,7 @@
             android:layout_alignParentRight="true"
             android:text="购买"
             android:onClick="buyPage"
+            android:height="30dp"
             />
     </RelativeLayout>
 
@@ -153,4 +136,42 @@
 
 
 </com.example.ItemDetail.MyScrollView>
+</LinearLayout>
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:id="@+id/botton_module"
+        android:layout_alignParentBottom="true"
+        >
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            />
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="share"
+            android:id="@+id/share_item"
+            android:layout_alignParentRight="true"
+            />
 
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Love"
+            android:layout_toLeftOf="@id/share_item"
+            android:id="@+id/love_item"
+            android:paddingRight="10dp"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+</RelativeLayout>

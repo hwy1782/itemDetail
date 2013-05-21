@@ -30,7 +30,4 @@
             android:layout_below="@id/evaluater_name"
             android:text="content is lager"
             />
-
-
 </RelativeLayout>
-
