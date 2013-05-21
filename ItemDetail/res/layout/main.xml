@@ -97,6 +97,7 @@
             android:id="@+id/item_buy_button"
             android:layout_alignParentRight="true"
             android:text="购买"
+            android:onClick="buyPage"
             />
     </RelativeLayout>
 
@@ -109,34 +110,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-
-       <!-- <LinearLayout
-                android:id="@+id/item_detail_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <RelativeLayout
-                    android:id="@+id/item_detail_placeholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    >
-                <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:id="@+id/item_detail_button"
-                    android:text="商品详情"
-                    android:onClick="itemDetail"
-                    />
-
-                 <ImageView
-                         android:layout_height="40dp"
-                         android:layout_width="wrap_content"
-                         android:src="@drawable/right_icon"
-                         android:layout_alignParentRight="true"
-                         />
-
-            </RelativeLayout>
-        </LinearLayout>-->
 
         <LinearLayout
                 android:id="@+id/item_evaluate_navigate"

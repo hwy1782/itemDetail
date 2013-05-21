@@ -3,3 +3,7 @@
 .idea/*/
 .idea/*
 .iml
+ant.properties
+*.iml
+*/gen/*
+build.xml

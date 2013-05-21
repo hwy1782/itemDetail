@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public void itemDetail(View view){
+    public void buyPage(View view){
         Intent intent = new Intent(MainActivity.this,ItemDetail.class);
         startActivity(intent);
     }
