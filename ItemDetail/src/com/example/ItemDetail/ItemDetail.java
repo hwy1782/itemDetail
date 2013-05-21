@@ -32,12 +32,14 @@ public class ItemDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
         setContentView(R.layout.item_detail_layout);
+        initViewPager();
     }
 
     /**
      * 初始化商品详情大图
      */
     private void initViewPager() {
+        viewPager = (ViewPager) findViewById(R.id.item_detail_vPager);
         views = new ArrayList<View>();
         LayoutInflater inflater = getLayoutInflater();
 //        view1=inflater.inflate(R.layout.view_detail, null);

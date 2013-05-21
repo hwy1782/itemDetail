@@ -26,8 +26,6 @@ public class MainActivity extends Activity {
 
     RelativeLayout priceBuyPlaceholder;
 
-//    ImageView itemLargePicture;
-
     LinearLayout itemEvaluate;
 
     private ViewPager viewPager;
@@ -54,7 +52,6 @@ public class MainActivity extends Activity {
 
     public void itemDetail(View view){
         Intent intent = new Intent(MainActivity.this,ItemDetail.class);
-//        intent.
         startActivity(intent);
     }
 
@@ -69,22 +66,15 @@ public class MainActivity extends Activity {
      * 初始化商品详情大图
      */
     private void initViewPager() {
+        int viewHeight = 0;
         views = new ArrayList<View>();
         LayoutInflater inflater = getLayoutInflater();
-//        view1=inflater.inflate(R.layout.view_detail, null);
-
         for(int i = 0; i < 3; i++){
             View tmpView = inflater.inflate(R.layout.item_picture, null);
             views.add(tmpView);
+            viewHeight = tmpView.getHeight() > viewHeight ? tmpView.getHeight() : viewHeight;
         }
 
-       /* view1= new AtMtView(this);
-        view1.setOnItemClickListener(new AtMtViewClickListener());
-        view2=inflater.inflate(R.layout.lay2, null);
-        view3=inflater.inflate(R.layout.lay3, null);
-        views.add(view1);
-        views.add(view2);
-        views.add(view3);*/
         viewPager.setAdapter(new MyViewPagerAdapter(views));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
@@ -100,6 +90,9 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * 填充viewPage页面
+     */
     public class MyViewPagerAdapter extends PagerAdapter {
         private List<View> mListViews;
 
@@ -130,7 +123,9 @@ public class MainActivity extends Activity {
         }
     }
 
-
+    /**
+     * 监听viewPage事件
+     */
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         int one = offset * 2 + bmpW;// view1 -> view2
@@ -151,7 +146,7 @@ public class MainActivity extends Activity {
             currIndex = arg0;
             animation.setFillAfter(true);// True:
             animation.setDuration(300);
-            imageView.startAnimation(animation);
+//            imageView.startAnimation(animation);
 //            Toast.makeText(ViewPageTest.this, "current page is " + viewPager.getCurrentItem() , Toast.LENGTH_SHORT).show();
         }
 

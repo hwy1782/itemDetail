@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.ItemDetail.MyScrollView
+              xmlns:android="http://schemas.android.com/apk/res/android"
               android:scrollbars="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -32,15 +33,20 @@
             />
 
     </RelativeLayout>-->
+   <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >-->
     <android.support.v4.view.ViewPager
             android:id="@+id/vPager"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_weight="1.0"
             android:background="#000000"
             android:flipInterval="30"
             android:persistentDrawingCache="animation" />
+    <!--</LinearLayout>-->
 
     <LinearLayout
             android:id="@+id/item_detail_down"
@@ -104,7 +110,7 @@
             android:orientation="vertical"
             >
 
-        <LinearLayout
+       <!-- <LinearLayout
                 android:id="@+id/item_detail_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +136,7 @@
                          />
 
             </RelativeLayout>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
                 android:id="@+id/item_evaluate_navigate"
@@ -173,5 +179,5 @@
     </LinearLayout>
 
 
-</ScrollView>
+</com.example.ItemDetail.MyScrollView>
 
