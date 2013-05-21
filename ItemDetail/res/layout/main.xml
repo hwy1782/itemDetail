@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:scrollbars="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent">
+
     <!--商品大图  -->
-    <LinearLayout
+    <!--<RelativeLayout
             android:id="@+id/item_large_picture_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -13,24 +18,52 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/item_large_picture"
             android:src="@drawable/meinv"
             />
 
-    </LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/meinv"
+            android:text="商品标题"
+            android:layout_above="@id/item_large_picture"
+            android:background="@color/red"
+            />
+
+    </RelativeLayout>-->
+    <android.support.v4.view.ViewPager
+            android:id="@+id/vPager"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:background="#000000"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation" />
+
+    <LinearLayout
+            android:id="@+id/item_detail_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/light_backgrand"
+            android:orientation="vertical"
+            >
 
     <!-- 价格 + 购买按钮 -->
     <LinearLayout
             android:id="@+id/price_and_buy"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_height="35dp"
             >
 
     <RelativeLayout
             android:id="@+id/price_buy_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             >
+    <!-- 优惠后价格-->
     <TextView
             android:id="@+id/item_new_price"
             android:layout_height="wrap_content"
@@ -40,6 +73,8 @@
             android:textSize="20sp"
             android:layout_alignBaseline="@+id/item_buy_button"
             />
+
+    <!-- 原价格-->
     <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -49,6 +84,7 @@
             android:layout_alignBaseline="@+id/item_buy_button"
             />
 
+    <!-- 购买按钮-->
     <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -68,42 +104,74 @@
             android:orientation="vertical"
             >
 
-    <RelativeLayout
-            android:id="@+id/item_detail_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-    <Button
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="商品详情"
-            />
+        <LinearLayout
+                android:id="@+id/item_detail_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <RelativeLayout
+                    android:id="@+id/item_detail_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/item_detail_button"
+                    android:text="商品详情"
+                    android:onClick="itemDetail"
+                    />
 
-     <ImageView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:src="@drawable/right_icon"
-             android:layout_alignParentRight="true"
-             />
-     </RelativeLayout>
+                 <ImageView
+                         android:layout_height="40dp"
+                         android:layout_width="wrap_content"
+                         android:src="@drawable/right_icon"
+                         android:layout_alignParentRight="true"
+                         />
 
-    <LinearLayout
-            android:id="@+id/item_evaluate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_evaluate_lst"
-            >
+            </RelativeLayout>
+        </LinearLayout>
 
-    </ListView>
+        <LinearLayout
+                android:id="@+id/item_evaluate_navigate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品评价"
+                />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(12)"
+                    />
+        </LinearLayout>
+
+        <!--详细评价占位符-->
+        <LinearLayout
+                android:id="@+id/item_evaluate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+        </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
     </LinearLayout>
+    </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>
 

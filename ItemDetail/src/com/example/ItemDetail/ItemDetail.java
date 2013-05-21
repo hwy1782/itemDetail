@@ -1,68 +1,37 @@
 package com.example.ItemDetail;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.AndroidCharacter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
+/**
+ * Created with IntelliJ IDEA.
+ * User: hint
+ * Date: 13-5-21
+ * Time: 上午9:08
+ * To change this template use File | Settings | File Templates.
+ */
+public class ItemDetail extends Activity {
 
-    RelativeLayout priceBuyPlaceholder;
-
-//    ImageView itemLargePicture;
-
-    LinearLayout itemEvaluate;
-
-    private ViewPager viewPager;
-
-    private List<View> views;
-
+    List<View> views;
+    ViewPager viewPager;
     private int offset = 0;
     private int currIndex = 0;
     private int bmpW;
-    private ImageView imageView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
-        initCompoment();
-
-        initViewPager();
-
-        addItemEvaluate();
-    }
-
-
-    public void itemDetail(View view){
-        Intent intent = new Intent(MainActivity.this,ItemDetail.class);
-//        intent.
-        startActivity(intent);
-    }
-
-    private void initCompoment(){
-        priceBuyPlaceholder = (RelativeLayout) findViewById(R.id.price_buy_placeholder);
-//        itemLargePicture = (ImageView) findViewById(R.id.item_large_picture);
-        itemEvaluate = (LinearLayout) findViewById(R.id.item_evaluate);
-        viewPager = (ViewPager) findViewById(R.id.vPager);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
+        setContentView(R.layout.item_detail_layout);
     }
 
     /**
@@ -88,16 +57,6 @@ public class MainActivity extends Activity {
         viewPager.setAdapter(new MyViewPagerAdapter(views));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
-    }
-
-    /**
-     * 添加评论
-     */
-    private void addItemEvaluate(){
-        LayoutInflater inflater = getLayoutInflater();
-        for(int i = 0 ; i < 3; i++){
-            inflater.inflate(R.layout.item_evaluate,itemEvaluate);
-        }
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -130,7 +89,6 @@ public class MainActivity extends Activity {
         }
     }
 
-
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         int one = offset * 2 + bmpW;// view1 -> view2
@@ -151,10 +109,11 @@ public class MainActivity extends Activity {
             currIndex = arg0;
             animation.setFillAfter(true);// True:
             animation.setDuration(300);
-            imageView.startAnimation(animation);
+//            imageView.startAnimation(animation);
 //            Toast.makeText(ViewPageTest.this, "current page is " + viewPager.getCurrentItem() , Toast.LENGTH_SHORT).show();
         }
 
     }
+
 
 }

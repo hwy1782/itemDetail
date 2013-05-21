@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
+              android:id="@+id/item_evaluate_moudle"
+              android:padding="10dp"
         >
 
+        <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/evaluater_picture"
+                android:src="@drawable/icon_meinv"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/evaluater_name"
+                android:layout_toRightOf="@id/evaluater_picture"
+                android:text="name is kate"
+                android:textSize="18sp"
+                />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/evaluate_content"
+            android:layout_toRightOf="@id/evaluater_picture"
+            android:layout_below="@id/evaluater_name"
+            android:text="content is lager"
+            />
 
 
-</LinearLayout>
+</RelativeLayout>
 

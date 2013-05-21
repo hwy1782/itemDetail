@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/item_evaluate_moudle">
+
+       <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/evaluater_picture"
+                android:src="@drawable/meinv"
+                />
+
+       <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/evaluater_picture"
+            android:id="@+id/evaluater_name"
+            android:text="name is kate"
+            android:textSize="48sp"
+            />
+
+</RelativeLayout>
+
