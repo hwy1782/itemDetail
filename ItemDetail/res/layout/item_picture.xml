@@ -8,9 +8,9 @@
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:id="@+id/item_large_picture"
-                android:src="@drawable/meinv"
+                android:onClick="openLargePicture"
                 />
-
+    <!--android:src="@drawable/meinv"-->
        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

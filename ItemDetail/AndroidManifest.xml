@@ -14,7 +14,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ItemDetail">com.example.ItemDetail.ItemDetail</activity>
+        <activity android:name=".ItemDetail">com.example.ItemDetail.ItemDetail</activity>
+        <activity android:name="com.example.test.ViewPagerDemoActivity"/>
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
