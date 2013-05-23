@@ -30,9 +30,10 @@ public class ListenScrollPostion extends Activity {
         scrollPlaceHolder = (LinearLayout) findViewById(R.id.scroll_place_holder);
 
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 50; i++){
             TextView textView = new TextView(this);
             textView.setText("text ====>"+i);
+            textView.setTextSize(20);
             scrollPlaceHolder.addView(textView);
         }
 

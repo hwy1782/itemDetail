@@ -4,6 +4,11 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        >
 
     <ImageView
             android:layout_height="wrap_content"
@@ -12,18 +17,27 @@
             android:src="@drawable/meinv"
             />
 
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dimgrey"
+            >
+        <TextView
+                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/scroll_textView"
+                android:text="价格是"
+                android:textSize="25dp"
+                />
+    </LinearLayout>
 
-    <TextView
-            android:layout_height="fill_parent"
-            android:layout_width="wrap_content"
-            android:id="@+id/scroll_textView"
-            />
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/scroll_place_holder"
+            android:orientation="vertical"
             />
 
-
+    </LinearLayout>
 </ScrollView>

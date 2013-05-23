@@ -151,6 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BACK"
+            android:onClick="shareItem2"
             />
     <Button
             android:layout_width="wrap_content"

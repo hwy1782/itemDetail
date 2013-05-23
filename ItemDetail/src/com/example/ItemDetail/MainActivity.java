@@ -91,6 +91,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void shareItem2(View view){
+        Intent intent = new Intent(MainActivity.this,NetworkActivity2.class);
+        startActivity(intent);
+    }
+
 
     public void testListenScrollPostion(View view){
         Intent intent = new Intent(MainActivity.this,ListenScrollPostion.class);
