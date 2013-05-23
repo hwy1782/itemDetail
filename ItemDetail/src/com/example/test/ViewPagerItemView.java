@@ -1,6 +1,8 @@
 package com.example.test;
 
+import android.graphics.drawable.Drawable;
 import com.example.ItemDetail.R;
+import com.example.service.DownloadImageTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,8 +15,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
 /**
- * @author frankiewei
  * 相册的ItemView,自定义View.方便复用.
  */
 public class ViewPagerItemView extends FrameLayout {
@@ -57,6 +60,10 @@ public class ViewPagerItemView extends FrameLayout {
 
         mAlbumImageView = (ImageView)view.findViewById(R.id.album_imgview);
         mALbumNameTextView = (TextView)view.findViewById(R.id.album_name);
+
+        mALbumNameTextView.setBackgroundColor(R.color.black);
+        mALbumNameTextView.getBackground().setAlpha(150);
+
         addView(view);
     }
 
@@ -75,7 +82,24 @@ public class ViewPagerItemView extends FrameLayout {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
+    public void setDataByNet(JSONObject object){
+        this.mObject = object;
+        try {
+//            String imgUrl = object.getString("imgUrl");
+            String imgUrl = "http://ptg.tc.qq.com/qtuan2/0/_abcompat_77a776cf3d04b6f3195e0cfd7fc67435/660";
+            String name = object.getString("name");
+            //实战中如果图片耗时应该令其一个线程去拉图片异步,不然把UI线程卡死.
+            mAlbumImageView.setImageDrawable((Drawable) new DownloadImageTask().execute(imgUrl).get());
+            mALbumNameTextView.setText(name);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

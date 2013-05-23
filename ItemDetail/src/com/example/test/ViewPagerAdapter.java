@@ -1,7 +1,9 @@
 package com.example.test;
 
 import java.util.HashMap;
+import java.util.List;
 
+import android.view.ViewGroup;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,7 +15,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * @author frankiewei
  * 相册的适配器.
  */
 public class ViewPagerAdapter extends PagerAdapter {
@@ -39,15 +40,17 @@ public class ViewPagerAdapter extends PagerAdapter {
         mHashMap = new HashMap<Integer, ViewPagerItemView>();
     }
 
+    private List<View> mListViews;
+
     //这里进行回收，当我们左右滑动的时候，会把早期的图片回收掉.
     @Override
-    public void destroyItem(View container, int position, Object object) {
+    public void destroyItem(ViewGroup container, int position, Object object) {
         ViewPagerItemView itemView = (ViewPagerItemView)object;
         itemView.recycle();
     }
 
     @Override
-    public void finishUpdate(View view) {
+    public void finishUpdate(ViewGroup view) {
 
     }
 
@@ -60,7 +63,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     //这里就是初始化ViewPagerItemView.如果ViewPagerItemView已经存在,
     //重新reload，不存在new一个并且填充数据.
     @Override
-    public Object instantiateItem(View container, int position) {
+    public Object instantiateItem(ViewGroup container, int position) {
         ViewPagerItemView itemView;
         if(mHashMap.containsKey(position)){
             itemView = mHashMap.get(position);
@@ -70,6 +73,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             try {
                 JSONObject dataObj = (JSONObject) mJsonArray.get(position);
                 itemView.setData(dataObj);
+//                itemView.setDataByNet(dataObj);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -96,7 +100,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void startUpdate(View view) {
+    public void startUpdate(ViewGroup view) {
 
     }
 }
