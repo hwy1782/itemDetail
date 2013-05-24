@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
+import com.example.other.Util;
 import com.example.test.NetworkActivity;
 import com.example.test.ViewPagerAdapter;
 import com.example.test.ViewPagerDemoActivity;
@@ -21,7 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnTouchListener{
 
     private static final String PACKAGE_NAME = "com.example.ItemDetail";
 
@@ -62,6 +64,9 @@ public class MainActivity extends Activity {
     private JSONArray mJsonArray;
 
     private static final int ALBUM_COUNT = 100;
+
+    MyScrollView contentWrap;
+    LinearLayout floatContent;
 
 
     @Override
@@ -108,6 +113,12 @@ public class MainActivity extends Activity {
         viewPager = (ViewPager) findViewById(R.id.vPager);
         itemEvaluateMoudle = (RelativeLayout) findViewById(R.id.item_picture_moudle);
         bottonModule = (LinearLayout) findViewById(R.id.botton_module);
+
+        contentWrap = (MyScrollView) findViewById(R.id.content_wrap);
+        contentWrap.setOnTouchListener(this);
+
+        floatContent = (LinearLayout) findViewById(R.id.float_content);
+
     }
 
     private void setComponentTransparent(){
@@ -116,6 +127,9 @@ public class MainActivity extends Activity {
 
         bottonModule.setBackgroundColor(R.color.black);
         bottonModule.getBackground().setAlpha(150);
+
+        floatContent.setBackgroundColor(R.color.black);
+        floatContent.getBackground().setAlpha(160);
     }
 
     private void initViewPager(){
@@ -147,5 +161,27 @@ public class MainActivity extends Activity {
             view.getBackground().setAlpha(150);
         }
     }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+//        if(event.getAction()==MotionEvent.ACTION_MOVE){
+
+            //可以监听到ScrollView的滚动事件
+            Log.i(TAG, "ACTION_MOVE X=" + contentWrap.getScrollX() + "w=" + contentWrap.getScrollY());
+
+            if(Util.px2dip(this,contentWrap.getScrollY()) >  300){
+                floatContent.setVisibility(View.VISIBLE);
+            }else{
+                floatContent.setVisibility(View.INVISIBLE);
+            }
+
+//        }
+
+        return false;
+
+    }
+
+
 
 }

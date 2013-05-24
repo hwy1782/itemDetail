@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/price_and_buy"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingBottom="10dp"
+            >
+
+    <RelativeLayout
+            android:id="@+id/price_buy_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+    <!-- 优惠后价格-->
+    <TextView
+            android:id="@+id/item_new_price"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="￥ 86.52"
+            android:textColor="@color/salmon"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/item_buy_button"
+            />
+
+    <!-- 原价格-->
+    <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_old_price"
+            android:layout_toRightOf="@id/item_new_price"
+            android:text="￥ 156.52"
+            android:layout_alignBaseline="@+id/item_buy_button"
+            />
+
+    <!-- 购买按钮-->
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_buy_button"
+            android:layout_alignParentRight="true"
+            android:text="购买"
+            android:onClick="buyPage"
+            android:height="30dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

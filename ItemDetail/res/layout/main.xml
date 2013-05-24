@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        >
+<RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
     >
@@ -13,6 +18,7 @@
               android:scrollbars="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:id="@+id/content_wrap"
         >
 
     <LinearLayout android:orientation="vertical"
@@ -151,7 +157,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BACK"
-            android:onClick="shareItem2"
             />
     <Button
             android:layout_width="wrap_content"
@@ -169,7 +174,6 @@
             android:layout_toLeftOf="@id/share_item"
             android:id="@+id/love_item"
             android:paddingRight="10dp"
-            android:onClick="testListenScrollPostion"
             />
 
     </RelativeLayout>
@@ -178,3 +182,27 @@
 </LinearLayout>
 
 </RelativeLayout>
+
+<!--<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/background_light"
+    android:id="@+id/float_content"
+    android:visibility="gone"
+
+    >
+    <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="测试数据"
+            />
+
+</LinearLayout>-->
+
+<include  layout="@layout/price_and_buy_module"
+          android:id="@+id/float_content"
+          android:visibility="gone"
+        />
+
+
+</FrameLayout>

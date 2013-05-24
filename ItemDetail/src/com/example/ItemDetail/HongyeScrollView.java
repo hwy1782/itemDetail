@@ -2,9 +2,11 @@ package com.example.ItemDetail;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +32,7 @@ public class HongyeScrollView extends ScrollView{
             canScroll = true;
         return super.onInterceptTouchEvent(ev) && mGestureDetector.onTouchEvent(ev);
     }
+
 
     class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
