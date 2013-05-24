@@ -25,8 +25,6 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnTouchListener{
 
-    private static final String PACKAGE_NAME = "com.example.ItemDetail";
-
     RelativeLayout priceBuyPlaceholder;
 
     LinearLayout itemEvaluate;
@@ -168,7 +166,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 //        if(event.getAction()==MotionEvent.ACTION_MOVE){
 
             //可以监听到ScrollView的滚动事件
-            Log.i(TAG, "ACTION_MOVE X=" + contentWrap.getScrollX() + "w=" + contentWrap.getScrollY());
+            Log.i(TAG, "ACTION_MOVE X=" + contentWrap.getScrollX() + " Y =" + contentWrap.getScrollY());
 
             if(Util.px2dip(this,contentWrap.getScrollY()) >  300){
                 floatContent.setVisibility(View.VISIBLE);
