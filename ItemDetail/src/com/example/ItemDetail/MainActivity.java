@@ -101,8 +101,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
 
     public void testListenScrollPostion(View view){
-        Intent intent = new Intent(MainActivity.this,ListenScrollPostion.class);
-        startActivity(intent);
+
     }
 
     private void initCompoment(){
@@ -163,7 +162,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-//        if(event.getAction()==MotionEvent.ACTION_MOVE){
+        if(event.getAction()==MotionEvent.ACTION_MOVE){
 
             //可以监听到ScrollView的滚动事件
             Log.i(TAG, "ACTION_MOVE X=" + contentWrap.getScrollX() + " Y =" + contentWrap.getScrollY());
@@ -174,7 +173,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                 floatContent.setVisibility(View.INVISIBLE);
             }
 
-//        }
+        }
 
         return false;
 

@@ -17,8 +17,8 @@
         <activity android:name=".ItemDetail">com.example.ItemDetail.ItemDetail</activity>
         <activity android:name="com.example.test.ViewPagerDemoActivity"/>
         <activity android:name="com.example.test.NetworkActivity"/>
-        <activity android:name="com.example.ItemDetail.ListenScrollPostion"/>
         <activity android:name="com.example.ItemDetail.NetworkActivity2"/>
+        <activity android:name=".OpenImage" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 
 
 

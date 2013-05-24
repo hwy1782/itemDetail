@@ -1,6 +1,8 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import com.example.ItemDetail.OpenImage;
 import com.example.ItemDetail.R;
 import com.example.service.DownloadImageTask;
 import org.json.JSONException;
@@ -20,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * 相册的ItemView,自定义View.方便复用.
  */
-public class ViewPagerItemView extends FrameLayout {
+public class ViewPagerItemView extends FrameLayout implements View.OnClickListener{
 
     /**
      * 图片的ImageView.
@@ -42,14 +44,18 @@ public class ViewPagerItemView extends FrameLayout {
      */
     private JSONObject mObject;
 
+    private Context myContext;
+
 
     public ViewPagerItemView(Context context){
         super(context);
+        myContext = context;
         setupViews();
     }
 
     public ViewPagerItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        myContext = context;
         setupViews();
     }
 
@@ -65,6 +71,9 @@ public class ViewPagerItemView extends FrameLayout {
         mALbumNameTextView.getBackground().setAlpha(150);
 
         addView(view);
+
+        //添加图片监听器
+        mAlbumImageView.setOnClickListener(this);
     }
 
     /**
@@ -127,4 +136,15 @@ public class ViewPagerItemView extends FrameLayout {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+       Intent openImageExplor = new Intent(myContext,OpenImage.class);
+       myContext.startActivity(openImageExplor);
+    }
+
+    /*@Override
+    public void setOnLongClickListener(OnLongClickListener l) {
+        Intent intent = new Intent(myContext,OpenImage.class);
+        myContext.startActivity(intent);
+    }*/
 }
