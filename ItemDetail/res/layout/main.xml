@@ -18,7 +18,7 @@
 
     <!-- 顶部工具栏，初始化隐藏 -->
     <include
-        android:id="@+id/float_content"
+        android:id="@+id/top_float_content"
         layout="@layout/top_float_module"
         android:visibility="gone"/>
 

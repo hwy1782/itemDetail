@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--价格 购买 工具栏-->
+<!-- 购买 工具栏-->
 <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/price_and_buy_moudle"

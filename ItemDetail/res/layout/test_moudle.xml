@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+    <!-- 核心区域，包括：商品大图、评论等模块 -->
+    <include layout="@layout/item_detail_main_moudle" />
+
+    <!-- 底部 工具栏：后退，喜欢，分享 按钮 -->
+    <include layout="@layout/buttom_float_module" />
+
+</RelativeLayout>
+
+</LinearLayout>

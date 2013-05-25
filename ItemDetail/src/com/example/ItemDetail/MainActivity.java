@@ -2,7 +2,6 @@ package com.example.ItemDetail;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -19,21 +18,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class MainActivity extends Activity implements View.OnTouchListener{
 
-    LinearLayout priceBuyPlaceholder;
-
-    LinearLayout itemEvaluate;
-
-    RelativeLayout itemEvaluateMoudle;
-
-    LinearLayout bottomModule;
-
-    private ViewPager viewPager;
-
-    private List<View> views;
+    //价格购买区块
+    private LinearLayout priceAndBuyMoudle;
+    //商品评论区块
+    private LinearLayout itemCommentMoudle;
+    //商品大图区块
+    private RelativeLayout itemLargePicMoudle;
+    //底部工具栏
+    private LinearLayout bottomModule;
+    //滚动大图
+    private ViewPager itemViewPager;
+    //滚动scroll
+    MyScrollView itemDetailScroller;
+    // freamlayout 顶端浮动工具栏
+    private LinearLayout topFloatContent;
 
     private static final String TAG = "MainActivity";
 
@@ -61,9 +61,6 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
     private static final int ALBUM_COUNT = 100;
 
-    MyScrollView contentWrap;
-    LinearLayout floatContent;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,13 +69,12 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         //初始化组件
         initCompoment();
-        //初始化大图
+        //设置组件透明度
+        setComponentTransparent();
+        //获取大图
         initViewPager();
         //添加评论信息
         addItemEvaluate();
-        //设置组件透明度
-        setComponentTransparent();
-
     }
 
 
@@ -92,49 +88,37 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         startActivity(intent);
     }
 
-    public void shareItem2(View view){
-        Intent intent = new Intent(MainActivity.this,NetworkActivity2.class);
-        startActivity(intent);
-    }
+    private void initCompoment() {
 
-
-    public void testListenScrollPostion(View view){
-
-    }
-
-    private void initCompoment(){
-        priceBuyPlaceholder = (LinearLayout) findViewById(R.id.price_and_buy_moudle);
-        itemEvaluate = (LinearLayout) findViewById(R.id.item_evaluate);
-        viewPager = (ViewPager) findViewById(R.id.vPager);
-        itemEvaluateMoudle = (RelativeLayout) findViewById(R.id.item_picture_moudle);
+        priceAndBuyMoudle = (LinearLayout) findViewById(R.id.price_and_buy_moudle);
+        itemCommentMoudle = (LinearLayout) findViewById(R.id.item_comment);
+        itemViewPager = (ViewPager) findViewById(R.id.vPager);
+        itemLargePicMoudle = (RelativeLayout) findViewById(R.id.item_picture_moudle);
 
         //底层浮动工具栏
         bottomModule = (LinearLayout) findViewById(R.id.bottom_module);
 
-        contentWrap = (MyScrollView) findViewById(R.id.content_wrap);
-        contentWrap.setOnTouchListener(this);
+        itemDetailScroller = (MyScrollView) findViewById(R.id.item_detail_scroll);
+        itemDetailScroller.setOnTouchListener(this);
 
         // freamlayout 顶端浮动工具栏
-        floatContent = (LinearLayout) findViewById(R.id.float_content);
-
+        topFloatContent = (LinearLayout) findViewById(R.id.top_float_content);
     }
 
-    private void setComponentTransparent(){
-
+    private void  setComponentTransparent() {
         Drawable black = getResources().getDrawable(R.color.black);
+        priceAndBuyMoudle.setBackgroundDrawable(black);
 
-        priceBuyPlaceholder.setBackgroundDrawable(black);
-        priceBuyPlaceholder.getBackground().setAlpha(160);
+        topFloatContent.setBackgroundDrawable(black);
+        topFloatContent.getBackground().setAlpha(150);
 
-        bottomModule.setBackgroundDrawable(black);
         bottomModule.getBackground().setAlpha(150);
-
     }
 
     private void initViewPager(){
         //初始化JSonArray,给ViewPageAdapter提供数据源用.
         mJsonArray = new JSONArray();
-        for(int i = 0;i < ALBUM_COUNT; i++){
+        for(int i = 0;i<ALBUM_COUNT; i++){
             JSONObject object = new JSONObject();
             try {
                 object.put("resid", ALBUM_RES[i % ALBUM_RES.length]);
@@ -146,16 +130,17 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
         }
         mViewPagerAdapter = new ViewPagerAdapter(this, mJsonArray);
-        viewPager.setAdapter(mViewPagerAdapter);
+        itemViewPager.setAdapter(mViewPagerAdapter);
     }
 
     /**
      * 添加评论
      */
     private void addItemEvaluate(){
+
         LayoutInflater inflater = getLayoutInflater();
         for(int i = 0 ; i < 6; i++){
-            View view = inflater.inflate(R.layout.item_evaluate,itemEvaluate);
+            View view = inflater.inflate(R.layout.item_evaluate, itemCommentMoudle);
             Drawable black = getResources().getDrawable(R.color.black);
             view.setBackgroundDrawable(black);
             view.getBackground().setAlpha(150);
@@ -168,34 +153,18 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         if(event.getAction()==MotionEvent.ACTION_MOVE){
 
             //可以监听到ScrollView的滚动事件
-            Log.i(TAG, "ACTION_MOVE X=" + contentWrap.getScrollX() + " Y =" + contentWrap.getScrollY());
+            Log.i(TAG, "ACTION_MOVE X=" + itemDetailScroller.getScrollX() + " Y =" + itemDetailScroller.getScrollY());
 
-            if(Util.px2dip(this,contentWrap.getScrollY()) >  300){
-                floatContent.setVisibility(View.VISIBLE);
-
-                /*floatContent.setBackgroundColor(R.color.black);
-                int value = R.color.black;//注意这个地方返回的 black 的指针的直，而不是具体的颜色值，所以用这里的值设置颜色会发生错误
-                int value2 = Color.parseColor("#000000");
-
-                Log.i(TAG, "value =" + value + " value2 =" + value2);
-                */
-//                floatContent.setBackgroundColor(Color.parseColor("#000000"));
+            if(Util.px2dip(this, itemDetailScroller.getScrollY()) >  300){
+                topFloatContent.setVisibility(View.VISIBLE);
                 Drawable black = getResources().getDrawable(R.color.black);
-                floatContent.setBackgroundDrawable(black);
-
-                floatContent.setBackgroundDrawable(black);
+                topFloatContent.setBackgroundDrawable(black);
 
             }else{
-                floatContent.setVisibility(View.INVISIBLE);
+                topFloatContent.setVisibility(View.INVISIBLE);
             }
-
-
         }
-
         return false;
 
     }
-
-
-
 }

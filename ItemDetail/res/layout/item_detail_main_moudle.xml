@@ -5,7 +5,7 @@
             android:layout_height="fill_parent" >
 
 <com.example.ItemDetail.MyScrollView
-        android:id="@+id/content_wrap"
+        android:id="@+id/item_detail_scroll"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbars="vertical" >
@@ -28,7 +28,7 @@
 
         <LinearLayout
                 android:id="@+id/item_detail_down"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/light_backgrand"
                 android:orientation="vertical" >

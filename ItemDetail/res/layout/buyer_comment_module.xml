@@ -35,7 +35,7 @@
 
     <!--详细评价占位符-->
     <LinearLayout
-            android:id="@+id/item_evaluate"
+            android:id="@+id/item_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
