@@ -5,7 +5,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/price_and_buy_moudle"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             >
 
     <RelativeLayout
@@ -13,6 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+    <!-- 购买按钮-->
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/item_buy_button"
+            android:layout_alignParentRight="true"
+            android:text="购买"
+            android:onClick="buyPage"
+            />
+
     <!-- 优惠后价格-->
     <TextView
             android:id="@+id/item_new_price"
@@ -32,17 +42,6 @@
             android:layout_toRightOf="@id/item_new_price"
             android:text="￥ 156.52"
             android:layout_alignBaseline="@+id/item_buy_button"
-            />
-
-    <!-- 购买按钮-->
-    <Button
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/item_buy_button"
-            android:layout_alignParentRight="true"
-            android:text="购买"
-            android:onClick="buyPage"
-            android:height="30dp"
             />
     </RelativeLayout>
 
