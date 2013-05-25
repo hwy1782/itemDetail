@@ -35,7 +35,7 @@
 
             <!-- 价格 + 购买按钮 -->
 
-            <include layout="@layout/price_and_buy_module"
+            <include layout="@layout/top_float_module"
                     android:layout_height="45dp"/>
 
             <!-- 商品详情按钮 + 商品评价 -->
