@@ -2,8 +2,8 @@ package com.example.ItemDetail;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -19,19 +19,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnTouchListener{
 
-    RelativeLayout priceBuyPlaceholder;
+    LinearLayout priceBuyPlaceholder;
 
     LinearLayout itemEvaluate;
 
     RelativeLayout itemEvaluateMoudle;
 
-    LinearLayout bottonModule;
+    LinearLayout bottomModule;
 
     private ViewPager viewPager;
 
@@ -105,28 +103,32 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     }
 
     private void initCompoment(){
-        priceBuyPlaceholder = (RelativeLayout) findViewById(R.id.price_buy_placeholder);
+        priceBuyPlaceholder = (LinearLayout) findViewById(R.id.price_and_buy_moudle);
         itemEvaluate = (LinearLayout) findViewById(R.id.item_evaluate);
         viewPager = (ViewPager) findViewById(R.id.vPager);
         itemEvaluateMoudle = (RelativeLayout) findViewById(R.id.item_picture_moudle);
-        bottonModule = (LinearLayout) findViewById(R.id.botton_module);
+
+        //底层浮动工具栏
+        bottomModule = (LinearLayout) findViewById(R.id.bottom_module);
 
         contentWrap = (MyScrollView) findViewById(R.id.content_wrap);
         contentWrap.setOnTouchListener(this);
 
+        // freamlayout 顶端浮动工具栏
         floatContent = (LinearLayout) findViewById(R.id.float_content);
 
     }
 
     private void setComponentTransparent(){
-        priceBuyPlaceholder.setBackgroundColor(R.color.black);
+
+        Drawable black = getResources().getDrawable(R.color.black);
+
+        priceBuyPlaceholder.setBackgroundDrawable(black);
         priceBuyPlaceholder.getBackground().setAlpha(160);
 
-        bottonModule.setBackgroundColor(R.color.black);
-        bottonModule.getBackground().setAlpha(150);
+        bottomModule.setBackgroundDrawable(black);
+        bottomModule.getBackground().setAlpha(150);
 
-        floatContent.setBackgroundColor(R.color.black);
-        floatContent.getBackground().setAlpha(160);
     }
 
     private void initViewPager(){
@@ -152,9 +154,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
      */
     private void addItemEvaluate(){
         LayoutInflater inflater = getLayoutInflater();
-        for(int i = 0 ; i < 3; i++){
+        for(int i = 0 ; i < 6; i++){
             View view = inflater.inflate(R.layout.item_evaluate,itemEvaluate);
-            view.setBackgroundColor(R.color.black);
+            Drawable black = getResources().getDrawable(R.color.black);
+            view.setBackgroundDrawable(black);
             view.getBackground().setAlpha(150);
         }
     }
@@ -169,9 +172,23 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
             if(Util.px2dip(this,contentWrap.getScrollY()) >  300){
                 floatContent.setVisibility(View.VISIBLE);
+
+                /*floatContent.setBackgroundColor(R.color.black);
+                int value = R.color.black;//注意这个地方返回的 black 的指针的直，而不是具体的颜色值，所以用这里的值设置颜色会发生错误
+                int value2 = Color.parseColor("#000000");
+
+                Log.i(TAG, "value =" + value + " value2 =" + value2);
+                */
+//                floatContent.setBackgroundColor(Color.parseColor("#000000"));
+                Drawable black = getResources().getDrawable(R.color.black);
+                floatContent.setBackgroundDrawable(black);
+
+                floatContent.setBackgroundDrawable(black);
+
             }else{
                 floatContent.setVisibility(View.INVISIBLE);
             }
+
 
         }
 

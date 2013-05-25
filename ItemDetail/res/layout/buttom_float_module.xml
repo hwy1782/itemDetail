@@ -3,7 +3,7 @@
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="35dp"
-    android:id="@+id/botton_module"
+    android:id="@+id/bottom_module"
     android:layout_alignParentBottom="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
@@ -11,11 +11,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             >
+        <!--后退按钮-->
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="BACK"
                 />
+
+        <!--分享按钮-->
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,6 +28,7 @@
                 android:onClick="shareItem"
                 />
 
+        <!--喜欢按钮-->
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

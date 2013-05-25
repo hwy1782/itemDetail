@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--价格 购买 工具栏-->
 <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/price_and_buy"
+            android:id="@+id/price_and_buy_moudle"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:paddingBottom="10dp"
             >
 
     <RelativeLayout
-            android:id="@+id/price_buy_placeholder"
+            android:id="@+id/price_buy_packager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
