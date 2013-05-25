@@ -19,7 +19,7 @@
     <!-- 顶部工具栏，初始化隐藏 -->
     <include
         android:id="@+id/float_content"
-        layout="@layout/price_and_buy_module"
-        android:visibility="gone" />
+        layout="@layout/top_float_module"
+        android:visibility="gone"/>
 
 </FrameLayout>
