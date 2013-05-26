@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -147,27 +148,54 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         }
     }
 
+    int scrollY;
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            //action up 时候的位置
+            scrollY = itemDetailScroller.getScrollY();
+            detectScrollY();
 
-            //可以监听到ScrollView的滚动事件
-            Log.i(TAG, "ACTION_MOVE X=" + itemDetailScroller.getScrollX()
-                    +" Y = " + itemDetailScroller.getScrollY()
-            );
-
-            if (Util.px2dip(this, itemDetailScroller.getScrollY()) > 300) {
-                topFloatContent.setVisibility(View.VISIBLE);
-                Drawable black = getResources().getDrawable(R.color.black);
-                topFloatContent.setBackgroundDrawable(black);
-
-            } else {
-                topFloatContent.setVisibility(View.INVISIBLE);
-            }
         }
 
         return false;
+    }
+
+    /**
+     * 校验 惯性停止位置 和 action up位置是否一致
+     */
+    public void detectScrollY(){
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                int tempScrollY = itemDetailScroller.getScrollY();
+                if(tempScrollY != scrollY) {
+                    scrollY = tempScrollY;
+                    changeTopFloatContentVisibile();
+                }else {
+                    Log.e("TAG", "scrollX = " + tempScrollY);
+                    changeTopFloatContentVisibile();
+                    return;
+                }
+            }
+        }, 100);
+    }
+
+    /**
+     * 重置浮动工具栏的可见性
+     */
+    public void changeTopFloatContentVisibile(){
+
+        if (Util.px2dip(this, itemDetailScroller.getScrollY()) > 300) {
+            topFloatContent.setVisibility(View.VISIBLE);
+            Drawable black = getResources().getDrawable(R.color.black);
+            topFloatContent.setBackgroundDrawable(black);
+        } else {
+            topFloatContent.setVisibility(View.INVISIBLE);
+        }
+
     }
 
 

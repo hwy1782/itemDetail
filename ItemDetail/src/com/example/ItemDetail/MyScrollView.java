@@ -1,11 +1,14 @@
 package com.example.ItemDetail;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
+import com.example.other.Util;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +18,9 @@ import android.widget.ScrollView;
  * To change this template use File | Settings | File Templates.
  */
 public class MyScrollView extends ScrollView{
+
+    private static final String TAG = "MyScrollView";
+
     private boolean canScroll;
 
     private GestureDetector mGestureDetector;
@@ -27,6 +33,9 @@ public class MyScrollView extends ScrollView{
     }
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+//        Log.i(TAG, "======================================");
+
         if(ev.getAction() == MotionEvent.ACTION_UP)
             canScroll = true;
         return super.onInterceptTouchEvent(ev) && mGestureDetector.onTouchEvent(ev);
@@ -43,5 +52,16 @@ public class MyScrollView extends ScrollView{
             return canScroll;
         }
     }
+
+    /*@Override
+    public boolean onTouchEvent(MotionEvent ev) {
+
+       *//* Log.i(TAG, "onTouchEvent => ACTION_MOVE X=" + ev.getX()
+                + " Y = " + ev.getY()
+        );*//*
+        Log.i(TAG, "======================================");
+        super.onTouchEvent(ev);
+        return true;
+    }*/
 
 }
