@@ -18,7 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends Activity implements View.OnTouchListener{
+public class MainActivity extends Activity implements View.OnTouchListener {
 
     //价格购买区块
     private LinearLayout priceAndBuyMoudle;
@@ -78,13 +78,13 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     }
 
 
-    public void buyPage(View view){
-        Intent intent = new Intent(MainActivity.this,ViewPagerDemoActivity.class);
+    public void buyPage(View view) {
+        Intent intent = new Intent(MainActivity.this, ViewPagerDemoActivity.class);
         startActivity(intent);
     }
 
-    public void shareItem(View view){
-        Intent intent = new Intent(MainActivity.this,NetworkActivity.class);
+    public void shareItem(View view) {
+        Intent intent = new Intent(MainActivity.this, NetworkActivity.class);
         startActivity(intent);
     }
 
@@ -105,7 +105,7 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         topFloatContent = (LinearLayout) findViewById(R.id.top_float_content);
     }
 
-    private void  setComponentTransparent() {
+    private void setComponentTransparent() {
         Drawable black = getResources().getDrawable(R.color.black);
         priceAndBuyMoudle.setBackgroundDrawable(black);
 
@@ -115,10 +115,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
         bottomModule.getBackground().setAlpha(150);
     }
 
-    private void initViewPager(){
+    private void initViewPager() {
         //初始化JSonArray,给ViewPageAdapter提供数据源用.
         mJsonArray = new JSONArray();
-        for(int i = 0;i<ALBUM_COUNT; i++){
+        for (int i = 0; i < ALBUM_COUNT; i++) {
             JSONObject object = new JSONObject();
             try {
                 object.put("resid", ALBUM_RES[i % ALBUM_RES.length]);
@@ -136,10 +136,10 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     /**
      * 添加评论
      */
-    private void addItemEvaluate(){
+    private void addItemEvaluate() {
 
         LayoutInflater inflater = getLayoutInflater();
-        for(int i = 0 ; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             View view = inflater.inflate(R.layout.item_evaluate, itemCommentMoudle);
             Drawable black = getResources().getDrawable(R.color.black);
             view.setBackgroundDrawable(black);
@@ -150,21 +150,25 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-        if(event.getAction()==MotionEvent.ACTION_MOVE){
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
             //可以监听到ScrollView的滚动事件
-            Log.i(TAG, "ACTION_MOVE X=" + itemDetailScroller.getScrollX() + " Y =" + itemDetailScroller.getScrollY());
+            Log.i(TAG, "ACTION_MOVE X=" + itemDetailScroller.getScrollX()
+                    +" Y = " + itemDetailScroller.getScrollY()
+            );
 
-            if(Util.px2dip(this, itemDetailScroller.getScrollY()) >  300){
+            if (Util.px2dip(this, itemDetailScroller.getScrollY()) > 300) {
                 topFloatContent.setVisibility(View.VISIBLE);
                 Drawable black = getResources().getDrawable(R.color.black);
                 topFloatContent.setBackgroundDrawable(black);
 
-            }else{
+            } else {
                 topFloatContent.setVisibility(View.INVISIBLE);
             }
         }
-        return false;
 
+        return false;
     }
+
+
 }
