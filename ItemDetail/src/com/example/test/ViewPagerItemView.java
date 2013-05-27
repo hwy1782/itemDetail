@@ -2,6 +2,7 @@ package com.example.test;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.widget.LinearLayout;
 import com.example.ItemDetail.OpenImage;
 import com.example.ItemDetail.R;
 import com.example.service.DownloadImageTask;
@@ -46,6 +47,8 @@ public class ViewPagerItemView extends FrameLayout implements View.OnClickListen
 
     private Context myContext;
 
+    private LinearLayout itemNamePlaceholder;
+
 
     public ViewPagerItemView(Context context){
         super(context);
@@ -64,11 +67,11 @@ public class ViewPagerItemView extends FrameLayout implements View.OnClickListen
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.viewpager_itemview, null);
 
-        mAlbumImageView = (ImageView)view.findViewById(R.id.album_imgview);
-        mALbumNameTextView = (TextView)view.findViewById(R.id.album_name);
+        mAlbumImageView = (ImageView)view.findViewById(R.id.item_imgview);
+        mALbumNameTextView = (TextView)view.findViewById(R.id.item_name);
+        itemNamePlaceholder = (LinearLayout)view.findViewById(R.id.item_name_placeholder);
 
-        mALbumNameTextView.setBackgroundColor(R.color.black);
-        mALbumNameTextView.getBackground().setAlpha(150);
+        itemNamePlaceholder.getBackground().setAlpha(150);
 
         addView(view);
 
